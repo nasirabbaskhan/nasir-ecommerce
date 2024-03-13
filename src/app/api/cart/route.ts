@@ -13,12 +13,12 @@ export const GET = async (request: NextRequest) => {
     if (url.has("userid")) {
       const { userid } = validateUserid.parse({ userid: user_id });
       //console.log("userid5", userid);
-      const cartData = await db
+      const res = await db
         .select()
         .from(cartTable)
         .where(eq(cartTable.userid, userid));
 
-      return NextResponse.json({ cartData });
+      return NextResponse.json(res);
     } else {
       throw new Error("user id not found");
     }
