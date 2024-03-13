@@ -101,7 +101,8 @@ export const PUT = async (request: NextRequest) => {
           eq(cartTable.userid, validatedBody.userid),
           eq(cartTable.productid, validatedBody.productid)
         )
-      );
+      )
+      .returning();
     return NextResponse.json("OK");
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -129,7 +130,8 @@ export const DELETE = async (request: NextRequest) => {
       .delete(cartTable)
       .where(
         and(eq(cartTable.userid, userid), eq(cartTable.productid, productid))
-      );
+      )
+      .returning();
     return NextResponse.json("OK");
   } catch (error) {
     if (error instanceof z.ZodError) {
