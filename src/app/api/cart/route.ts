@@ -29,7 +29,7 @@ export const GET = async (request: NextRequest) => {
         { status: 422 }
       );
     }
-    console.log("error", error);
+    //console.log("error", error);
     return NextResponse.json({
       message: (error as { message: string }).message,
     });
@@ -84,7 +84,7 @@ export const POST = async (request: NextRequest) => {
         { status: 422 }
       );
     }
-    console.log((error as { message: string }).message);
+    //console.log((error as { message: string }).message);
     return NextResponse.json({ error: (error as { message: string }).message });
   }
 };
@@ -110,7 +110,7 @@ export const PUT = async (request: NextRequest) => {
         { status: 422 }
       );
     }
-    console.log((error as { message: string }).message);
+    //console.log((error as { message: string }).message);
     return NextResponse.json({ error: (error as { message: string }).message });
   }
 };
@@ -138,7 +138,7 @@ export const DELETE = async (request: NextRequest) => {
         { status: 422 }
       );
     }
-    console.log((error as { message: string }).message);
+    //console.log((error as { message: string }).message);
     return NextResponse.json({ error: (error as { message: string }).message });
   }
 };

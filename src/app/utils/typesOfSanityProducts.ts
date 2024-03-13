@@ -35,4 +35,5 @@ export interface sanityProducstType {
   description: IDescription[];
   size: string[];
   price: number;
+  _id: string;
 }
