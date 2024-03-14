@@ -5,7 +5,7 @@ import React from "react";
 import { cart } from "@/lib/drizzle";
 import CartMain from "@/components/Views/AddToCartCompo/CartMain";
 
-export async function grtAllUserIDCardProducts(user_id: string) {
+async function getAllUserIDCardProducts(user_id: string) {
   const res = await fetch(
     `https://nasirabbas-ecommerce.vercel.app/api/cart?userid=${user_id}`
   );
@@ -35,7 +35,7 @@ export default async function Cartpage() {
     );
   }
 
-  const data = await grtAllUserIDCardProducts(user.id);
+  const data = await getAllUserIDCardProducts(user.id);
   // console.log("Data is", data);
   // console.log("id", user.id);
 
