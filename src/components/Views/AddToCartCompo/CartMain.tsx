@@ -38,6 +38,20 @@ export default function CartMain({
   user: KindeUser;
 }) {
   const [productdata, setProductData] = useState<sanityProducstType[]>([]);
+  const dataGetter = async () => {
+    const productPromise = data.map((item: cart) => {
+      return getIdcartproductsFromSanity(item.productid);
+    });
+    try {
+      const productData = await Promise.all(productPromise);
+      console.log("akhter", productData);
+      setProductData(
+        productData.map((item: allSanityProducstType) => {
+          return item.result[0];
+        })
+      );
+    } catch (error) {}
+  };
   useEffect(() => {
     dataGetter();
   }, [data]);
@@ -58,21 +72,6 @@ export default function CartMain({
       </div>
     );
   }
-
-  const dataGetter = async () => {
-    const productPromise = data.map((item: cart) => {
-      return getIdcartproductsFromSanity(item.productid);
-    });
-    try {
-      const productData = await Promise.all(productPromise);
-      console.log("akhter", productData);
-      setProductData(
-        productData.map((item: allSanityProducstType) => {
-          return item.result[0];
-        })
-      );
-    } catch (error) {}
-  };
 
   // refresh();
 
