@@ -4,6 +4,8 @@ import Image from "next/image";
 import { urlForImage } from "../../../../sanity/lib/image";
 import ProductsDetail from "@/components/Views/ProductsDetail";
 import SanityProduct from "@/components/ui/sanityProduct";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 
 const products = (await fetchingSanityProducts()) as sanityProducstType[];
 async function productDescription(slug: string) {
@@ -11,13 +13,16 @@ async function productDescription(slug: string) {
 }
 
 export default async function Detail({ params }: { params: { slug: string } }) {
+  const { getUser } = getKindeServerSession();
+  const user = (await getUser()) as KindeUser;
+
   // await new Promise((res) => setTimeout(res, 7000));
   const product = (await productDescription(
     params.slug
   )) as sanityProducstType[];
   return (
     <>
-      <ProductsDetail product={product} />
+      <ProductsDetail product={product} user={user} />
 
       {/* show the products */}
       <section className="text-gray-600 body-font">

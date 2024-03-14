@@ -37,3 +37,7 @@ export interface sanityProducstType {
   price: number;
   _id: string;
 }
+export interface allSanityProducstType {
+  query: string;
+  result: Array<sanityProducstType>;
+}

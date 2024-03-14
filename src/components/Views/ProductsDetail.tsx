@@ -4,12 +4,17 @@ import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
 import { useState } from "react";
 import PortableText from "react-portable-text"; // to show sanity ritch text
+import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
+import AddToCartButton from "../ui/AddToCartButton";
 
 export default function ProductsDetail({
   product,
+  user,
 }: {
   product: sanityProducstType[];
+  user: KindeUser;
 }) {
+  //console.log("aneelaNasirUser", user);
   const [sizes, setSizes] = useState<string>(product[0].size[0]);
   const [activeImageUrl, setActiveimageUrl] = useState<string>(
     urlForImage(product[0].image[1]).url() as string
@@ -182,9 +187,7 @@ export default function ProductsDetail({
               <span className="title-font font-medium text-2xl text-gray-900">
                 $58.00
               </span>
-              <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
-                Add to Cart
-              </button>
+              <AddToCartButton user={user} product={product} />
             </div>
           </div>
         </div>

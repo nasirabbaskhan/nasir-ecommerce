@@ -65,7 +65,9 @@ export default async function NavBar() {
         </nav>
         <div className="space-x-6 flex items-center">
           <SearchFeature />
-          <ShoppingCart size={27} />
+          <Link href={"/cart"}>
+            <ShoppingCart size={27} />
+          </Link>
 
           {!user ? (
             <div className="flex space-x-4">
