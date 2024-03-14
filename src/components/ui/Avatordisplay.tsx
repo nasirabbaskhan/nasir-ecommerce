@@ -17,7 +17,6 @@ import { Mail, User } from "lucide-react";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 
 export default function Avatordisplay(props: { userData: KindeUser }) {
-  // console.log("given h email", props.userData.email);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

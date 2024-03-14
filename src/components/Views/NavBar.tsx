@@ -12,6 +12,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu";
 import Avatordisplay from "../ui/Avatordisplay";
 import { SearchFeature } from "../ui/SearchFeature";
+import Image from "next/image";
 
 interface Inavbar {
   label: string;
@@ -47,7 +48,7 @@ export default async function NavBar() {
           href="/"
           className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
         >
-          <span className="ml-3 text-xl cursor-pointer">logo</span>
+          <Image src={"/logo.jpeg"} width={95} height={95} alt="logo imge" />
         </Link>
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
           {navBarArray.map((item, index) => {

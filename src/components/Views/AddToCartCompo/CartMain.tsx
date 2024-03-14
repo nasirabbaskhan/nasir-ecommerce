@@ -44,7 +44,7 @@ export default function CartMain({
     });
     try {
       const productData = await Promise.all(productPromise);
-      console.log("akhter", productData);
+      
       setProductData(
         productData.map((item: allSanityProducstType) => {
           return item.result[0];
@@ -56,7 +56,7 @@ export default function CartMain({
     dataGetter();
   }, [data]);
 
-  // console.log("nasir aneela Data length ", data.length);
+  // ("nasir aneela Data length ", data.length);
   //    if cart data are not available
   if (data.length == 0) {
     return (

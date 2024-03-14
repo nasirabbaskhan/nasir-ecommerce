@@ -14,7 +14,6 @@ export default function ProductsDetail({
   product: sanityProducstType[];
   user: KindeUser;
 }) {
-  //console.log("aneelaNasirUser", user);
   const [sizes, setSizes] = useState<string>(product[0].size[0]);
   const [activeImageUrl, setActiveimageUrl] = useState<string>(
     urlForImage(product[0].image[1]).url() as string

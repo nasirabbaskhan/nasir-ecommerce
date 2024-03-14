@@ -19,7 +19,7 @@ export default function SummeryPricing({
       );
     }
   }, 0);
-  console.log("new nasir one datass", productdata);
+
   const shippng = 10;
   return (
     <div className="flex flex-col w-1/4 gap-5 ">

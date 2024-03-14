@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cart } from "@/lib/drizzle";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { Minimize, Plus } from "lucide-react";
+import refreshData from "../utils/action";
 
 export async function updateQuantityInDatabase(
   userid: string,
@@ -22,8 +23,7 @@ export async function updateQuantityInDatabase(
   if (!res.ok) {
     return "Error";
   }
-
-  return "OK";
+  refreshData();
 }
 
 export default function Quantity({
@@ -39,14 +39,14 @@ export default function Quantity({
     await updateQuantityInDatabase(
       user.id,
       item._id,
-      data.quantity + 1 // error resolve required
+      (data.quantity ? data.quantity : 0) + 1 // error resolve required
     );
   };
   const decrementQuantityHandler = async () => {
     await updateQuantityInDatabase(
       user.id,
       item._id,
-      data.quantity - 1 // error resolve required
+      (data.quantity ? data.quantity : 0) - 1
     );
   };
   return (
@@ -59,7 +59,7 @@ export default function Quantity({
           {" "}
           -{" "}
         </button>
-        <p className="ring-2 px-3 p-1 rounded-md">{data.quantity}</p>
+        <p className="ring-2 px-3 p-1 rounded-md">{data ? data.quantity : 0}</p>
         <button
           onClick={IncrementQuantityHandler}
           className="select-none text-2 xl cursor-pointer flex justify-center items-center w-8 h-8 rounded"

@@ -1,12 +1,14 @@
+"use client";
 import Image from "next/image";
 import { urlForImage } from "../../../sanity/lib/image";
 import { sanityProducstType } from "@/app/utils/typesOfSanityProducts";
-import Quantity from "./Quantity";
+import Quantity from "@/components/ui/Quantity";
 import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { cart } from "@/lib/drizzle";
 //import { deleteCartItemfromDB } from "../Views/AddToCartCompo/CartMain";
 import { X } from "lucide-react";
-import { useRouter } from "next/navigation";
+import refreshData from "../utils/action";
+// import { useRouter } from "next/navigation";
 
 export default function AddToCartItems({
   productdata,
@@ -17,7 +19,8 @@ export default function AddToCartItems({
   user: KindeUser;
   data: cart[];
 }) {
-  const { refresh } = useRouter();
+  // const { refresh } = useRouter();
+  // refresh();
   async function deleteCartItemfromDB(userid: string, productid: string) {
     await fetch(
       `https://nasirabbas-ecommerce.vercel.app/api/cart?userid=${userid}&productid=${productid}`,
@@ -25,9 +28,8 @@ export default function AddToCartItems({
         method: "DELETE",
       }
     );
-    return "OK";
+    await refreshData();
   }
-  refresh();
 
   return (
     <>
