@@ -29,9 +29,8 @@ export default function AddToCartButton({
     if (user) {
       await addToCartApiCalls(user.id, product[0]._id);
       toast({
-        title: "Scheduled: Catch up ",
-        description: "Friday, February 10, 2023 at 5:57 PM",
-        action: <ToastAction altText="Goto schedule to undo">Undo</ToastAction>,
+        title: "Sucessfull ",
+        description: "Addeed To Cart Sucessfully",
       });
     } else {
       toast({

@@ -11,10 +11,9 @@ export default function SanityProduct(props: { product: sanityProducstType }) {
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
         <Image
           src={urlForImage(props.product.image[0]).url()}
-          width={1000}
-          height={1000}
-          alt="product  image"
-          className="object-cover lg:w-120  object-center lg:h-48 md:h-36 w-full h-96 "
+          width={800}
+          height={10}
+          alt="product image"
         />
         <div className="p-6">
           <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">

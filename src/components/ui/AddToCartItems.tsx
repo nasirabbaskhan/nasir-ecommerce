@@ -8,6 +8,9 @@ import { cart } from "@/lib/drizzle";
 //import { deleteCartItemfromDB } from "../Views/AddToCartCompo/CartMain";
 import { X } from "lucide-react";
 import refreshData from "../utils/action";
+import { toast } from "./use-toast";
+import { ToastAction } from "@/components/ui/toast";
+import { Console } from "console";
 // import { useRouter } from "next/navigation";
 
 export default function AddToCartItems({
@@ -21,6 +24,7 @@ export default function AddToCartItems({
 }) {
   // const { refresh } = useRouter();
   // refresh();
+  console.log("todaysss products", productdata);
   async function deleteCartItemfromDB(userid: string, productid: string) {
     await fetch(
       `https://nasirabbas-ecommerce.vercel.app/api/cart?userid=${userid}&productid=${productid}`,
@@ -28,9 +32,15 @@ export default function AddToCartItems({
         method: "DELETE",
       }
     );
+    toast({
+      title: "Sucessfull ",
+      description: "Deleted Your Item Sucessfully",
+      variant: "destructive",
+      action: <ToastAction altText="Goto schedule to undo">Undo</ToastAction>,
+    });
     await refreshData();
   }
-
+  console.log("today products", productdata);
   return (
     <>
       {productdata.map((item, index) => {

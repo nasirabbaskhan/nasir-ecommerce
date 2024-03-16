@@ -34,7 +34,7 @@ export default async function SerachProducts({
         </section>
       ) : (
         <div className="text-gray-600 text-xl text-center">
-          your {params.keyword} is not available
+          Your {params.keyword} is not available
         </div>
       )}
     </>

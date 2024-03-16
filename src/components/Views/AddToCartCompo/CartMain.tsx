@@ -44,7 +44,7 @@ export default function CartMain({
     });
     try {
       const productData = await Promise.all(productPromise);
-      
+
       setProductData(
         productData.map((item: allSanityProducstType) => {
           return item.result[0];
@@ -56,7 +56,7 @@ export default function CartMain({
     dataGetter();
   }, [data]);
 
-  // ("nasir aneela Data length ", data.length);
+  console.log("nasir aneela product data ", productdata);
   //    if cart data are not available
   if (data.length == 0) {
     return (
@@ -86,7 +86,7 @@ export default function CartMain({
             </Link>{" "}
             / <span className="text-gray-600">Cart</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-6 ">
             <div className="w[69%]">
               <div className=" space-y-7 ">
                 <AddToCartItems
@@ -96,6 +96,7 @@ export default function CartMain({
                 />
               </div>
             </div>
+
             <SummeryPricing productdata={productdata} data={data} />
           </div>
         </div>

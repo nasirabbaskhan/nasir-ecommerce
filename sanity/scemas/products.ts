@@ -18,7 +18,7 @@ export const Products = defineType({
         source: "productname",
         maxLength: 200,
         slugify: (input: string) =>
-          input.toLowerCase().replace(/\s+/g, "-").slice(0, 20),
+          input.toLowerCase().replace(/\s+/g, "-").slice(0, 50),
       },
     }),
     defineField({

@@ -4,6 +4,7 @@ import { LogIn } from "lucide-react";
 import React from "react";
 import { cart } from "@/lib/drizzle";
 import CartMain from "@/components/Views/AddToCartCompo/CartMain";
+import refreshData from "@/components/utils/action";
 
 async function getAllUserIDCardProducts(user_id: string) {
   const res = await fetch(
@@ -36,9 +37,9 @@ export default async function Cartpage() {
   }
 
   const data = await getAllUserIDCardProducts(user.id);
-  // console.log("Data is", data);
+  console.log("Data is", data);
   // console.log("id", user.id);
-
+  await refreshData();
   return (
     <div>
       <CartMain data={data} user={user} />
