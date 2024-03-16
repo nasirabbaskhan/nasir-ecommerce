@@ -43,11 +43,12 @@ export default function Quantity({
     );
   };
   const decrementQuantityHandler = async () => {
-    await updateQuantityInDatabase(
-      user.id,
-      item._id,
-      (data.quantity ? data.quantity : 0) - 1
-    );
+    data.quantity > 1 &&
+      (await updateQuantityInDatabase(
+        user.id,
+        item._id,
+        (data.quantity ? data.quantity : 0) - 1
+      ));
   };
   return (
     <div className="flex justify-between  ">
