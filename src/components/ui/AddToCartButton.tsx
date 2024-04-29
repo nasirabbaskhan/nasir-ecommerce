@@ -7,7 +7,7 @@ import { ToastAction } from "@radix-ui/react-toast";
 
 // post the product into database
 export async function addToCartApiCalls(userid: string, productid: string) {
-  const res = await fetch("https://nasirabbas-ecommerce.vercel.app/api/cart", {
+  const res = await fetch("http://localhost:3000/api/cart", {
     mode: "no-cors",
     method: "POST",
     body: JSON.stringify({

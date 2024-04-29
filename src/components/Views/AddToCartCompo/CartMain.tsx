@@ -56,7 +56,7 @@ export default function CartMain({
     dataGetter();
   }, [data]);
 
-  console.log("nasir aneela product data ", productdata);
+  // console.log("nasir aneela product data ", productdata);
   //    if cart data are not available
   if (data.length == 0) {
     return (

@@ -1,5 +1,6 @@
+"use client";
 import { sanityProducstType } from "@/app/utils/typesOfSanityProducts";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./button";
 import { cart } from "@/lib/drizzle";
 
@@ -10,6 +11,8 @@ export default function SummeryPricing({
   productdata: sanityProducstType[];
   data: cart[];
 }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const totalOrders = productdata.reduce((total: any, priceItem: any) => {
     const quantityItem = data.find((item) => item.productid == priceItem._id);
     if (quantityItem) {
@@ -21,6 +24,18 @@ export default function SummeryPricing({
   }, 0);
 
   const shippng = 10;
+
+  async function handleProcessCheckout() {
+    setIsLoading(true);
+    let links = await fetch(`http://localhost:3000/api/checkout_session`, {
+      method: "POST",
+      body: JSON.stringify(productdata),
+    });
+    setIsLoading(false);
+    let { link } = await links.json();
+    // console.log("nasir link", link);
+    window.location.href = link;
+  }
   return (
     <div className="flex flex-col w-1/4 gap-5 ">
       <div className=" bg-gray-100 p-8 space-y-6">
@@ -46,7 +61,9 @@ export default function SummeryPricing({
           </p>
         </div>
       </div>
-      <Button variant={"destructive"}>Checkout</Button>
+      <Button onClick={handleProcessCheckout} variant={"destructive"}>
+        {isLoading ? "Loading...." : "Checkout"}
+      </Button>
     </div>
   );
 }

@@ -184,7 +184,9 @@ export default function ProductsDetail({
             </div>
             <div className="flex">
               <span className="title-font font-medium text-2xl text-gray-900">
-                $58.00
+                {product.map((item, index) => {
+                  return <span key={index}>{item.price} $</span>;
+                })}
               </span>
               <AddToCartButton user={user} product={product} />
             </div>
