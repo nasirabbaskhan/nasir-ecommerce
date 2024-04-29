@@ -27,7 +27,7 @@ export default function AddToCartItems({
   // console.log("todaysss products", productdata);
   async function deleteCartItemfromDB(userid: string, productid: string) {
     await fetch(
-      `http://localhost:3000/api/cart?userid=${userid}&productid=${productid}`,
+      `https://nasirabbas-ecommerce.vercel.app/api/cart?userid=${userid}&productid=${productid}`,
       {
         method: "DELETE",
       }

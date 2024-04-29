@@ -7,7 +7,9 @@ import CartMain from "@/components/Views/AddToCartCompo/CartMain";
 import refreshData from "@/components/utils/action";
 
 async function getAllUserIDCardProducts(user_id: string) {
-  const res = await fetch(`http://localhost:3000/api/cart?userid=${user_id}`);
+  const res = await fetch(
+    `https://nasirabbas-ecommerce.vercel.app/api/cart?userid=${user_id}`
+  );
   if (!res.ok) {
     return "Error";
   }

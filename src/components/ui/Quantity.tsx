@@ -11,7 +11,7 @@ export async function updateQuantityInDatabase(
   productid: string,
   quantity: number
 ) {
-  const res = await fetch(`http://localhost:3000/api/cart`, {
+  const res = await fetch(`https://nasirabbas-ecommerce.vercel.app/api/cart`, {
     // mode: "no-cors",
     method: "PUT",
     body: JSON.stringify({

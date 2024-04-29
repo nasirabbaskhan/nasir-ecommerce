@@ -27,10 +27,13 @@ export default function SummeryPricing({
 
   async function handleProcessCheckout() {
     setIsLoading(true);
-    let links = await fetch(`http://localhost:3000/api/checkout_session`, {
-      method: "POST",
-      body: JSON.stringify(productdata),
-    });
+    let links = await fetch(
+      `https://nasirabbas-ecommerce.vercel.app/api/checkout_session`,
+      {
+        method: "POST",
+        body: JSON.stringify(productdata),
+      }
+    );
     setIsLoading(false);
     let { link } = await links.json();
     // console.log("nasir link", link);
