@@ -4,6 +4,7 @@ import { KindeUser } from "@kinde-oss/kinde-auth-nextjs/dist/types";
 import { sanityProducstType } from "@/app/utils/typesOfSanityProducts";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@radix-ui/react-toast";
+import { useRouter } from "next/navigation";
 
 // post the product into database
 export async function addToCartApiCalls(userid: string, productid: string) {
@@ -24,6 +25,7 @@ export default function AddToCartButton({
   user: KindeUser;
   product: sanityProducstType[];
 }) {
+  const router= useRouter()
   const { toast } = useToast();
   const handleOnclick = async () => {
     if (user) {
@@ -33,11 +35,7 @@ export default function AddToCartButton({
         description: "Addeed To Cart Sucessfully",
       });
     } else {
-      toast({
-        title: "Unsuccesfull",
-        description: "Can not add to Cart successfully",
-        variant: "destructive",
-      });
+      router.push("/api/auth/login")
     }
   };
 
